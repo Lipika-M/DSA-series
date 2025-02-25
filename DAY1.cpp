@@ -22,7 +22,7 @@ while (n>0 && n%5==0){
 };
 //approach:repeatedly divided the given number with 2,3 & 5 and updating the number and then returning if n==1 i.e. 2,3 and 5 were the only prime factors 
 //SC=O(1)
-//TC=O(N)
+//TC=O(logN)
 
 
 //problem2:
