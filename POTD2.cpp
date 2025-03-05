@@ -4,7 +4,7 @@ class Solution {
     public:
      bool checkPowersOfThree(int n) {
         while(n >= 3){
-            if(n % 3 == 2) return false;³
+            if(n % 3 == 2) return false;
             n /= 3;
         }
         return n!= 2;
@@ -13,5 +13,5 @@ class Solution {
 };
 //Approach: we are basically checking till the number is greater than or equal to 3 and updating the value of n in each iteration now if in any iteration ,if the remainder when n is divided by 3 is 2 then false is returned 
 //because any number must be of form n=3⁰+3¹+3²...and should not be of  n=3ⁿ+2 form after updating
-//sc:O(0)
+//sc:O(1)
 //TC:(logN)
