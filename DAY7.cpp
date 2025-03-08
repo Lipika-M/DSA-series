@@ -66,6 +66,7 @@ public:
 
 
 //Problem : Rotate array 
+//https://leetcode.com/problems/rotate-array/
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
@@ -81,6 +82,7 @@ public:
 //SC:O(N)
 
 //Problem :Move Zeroes
+//https://leetcode.com/problems/move-zeroes/
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
