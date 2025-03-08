@@ -32,3 +32,34 @@ if (flowerbed[0]==0 && flowerbed[1]==0){
 //edge cases separately
 //SC:O(1)
 //TC:O(N)
+
+//Problem:Minimum positive sum subarray
+//https://leetcode.com/problems/minimum-positive-sum-subarray/description/?envType=problem-list-v2&envId=prefix-sum
+class Solution {
+public:
+    int minimumSumSubarray(vector<int>& nums, int l, int r) {
+         int n=nums.size();
+        int ans=INT_MAX;
+        for(int window=l;window<=r;window++){
+            
+              int minsum=INT_MAX;
+               for(int i=0;i<n && i+window<=n;i++){
+                  int sum=0;
+                for(int j=0;j<window  ;j++){
+                    int index=i+j;
+                    sum=sum+nums[index];
+                }
+                if ((sum < minsum) && (sum > 0)) {
+                    minsum = sum;
+                }
+             }
+        ans=min(ans,minsum);
+           } 
+           if (ans<=0 ||ans==INT_MAX)
+           return -1;
+        return ans;
+         }};
+//Approach: Checked the sum for each window and the stored the minimum sum possible for any windowsize keeping the constraint that sum is greater than equal to zero if no miminmum sum was found then
+//returned -1
+//TC:O(N²)
+//SC:O(1)
