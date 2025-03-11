@@ -37,3 +37,33 @@ public:
 //approach: started from the first row and first column then pushed back it in the ans vector in the desired order and then updated the row and column,while keeping track if all the elements of matrix are traversed 
 //TC:O(N*N)
 //SC:O(N*N)
+
+//Problem:Rotate image
+//https://leetcode.com/problems/rotate-image/
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int row=matrix.size();
+        int col=row;
+        if(row==1){
+            return ;
+        }
+       vector<int>mat;
+      for(int i=0;i<row;i++){
+            for (int j=0;j<col;j++){
+                 mat.push_back(matrix[i][j]);
+            }}
+        int index=0;
+         for(int i=0;i<row;i++){
+            for (int j=0;j<col ;j++){
+                int newi=j;
+                int newj=row-i-1;
+                 
+                matrix[newi][newj]=mat[index++];
+             }
+        }
+    }
+};
+//Approach: Observed the old indeces and new indeces of each element and found the pattern in old and new indeces so updated the matrix accordingly
+//TC:O(N*N)
+//SC:O(N*N)
