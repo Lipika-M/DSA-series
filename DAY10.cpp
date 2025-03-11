@@ -52,3 +52,29 @@ public:
 //Approach:stored the positive and negative integers separately and then arranged them in correct order in the original vector
 //TC:O(N)
 //SC:O(N)
+
+//Problem3: Next Permutation
+//https://leetcode.com/problems/next-permutation/
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        int n = nums.size(), index = -1;
+        for(int i=n-2; i>=0; i--){
+            if(nums[i] < nums[i+1]){ 
+                index = i;
+                break;
+            }
+        }
+        for(int i=n-1; i>=index && index != -1; i--){
+            if(nums[i] > nums[index]){
+                swap(nums[i], nums[index]);
+                break;
+            }
+        }
+        reverse(nums.begin() + index + 1, nums.end());
+    }
+};
+//Approach:found the first decreasing element from the right of the list Then,found the smallest element from the right side that is greater than the first decreasing element
+//then swapped these two elements and lastly reversed the list from the first decreasing element to the end of the list.
+//TC:O(N)
+//SC:O(1)
