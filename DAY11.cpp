@@ -67,3 +67,26 @@ public:
 //Approach: Observed the old indeces and new indeces of each element and found the pattern in old and new indeces so updated the matrix accordingly
 //TC:O(N*N)
 //SC:O(N*N)
+
+//Problem3:Pascals triangle
+//https://leetcode.com/problems/pascals-triangle/
+class Solution {
+public:
+    vector<vector<int>> generate(int numrows) {
+        vector<vector<int>> ans;
+        vector<int>previous;
+        for(int i=1;i<=numrows;i++){
+            vector<int>current(i,1);
+            for(int j=1;j<i-1;j++ ){
+                current[j]=previous[j-1]+previous[j];
+            }
+            previous=current;
+            ans.push_back(current);
+        }
+        return ans;
+    }
+};
+//Approach:observed that for any nth row we need a vector of size n then put elements in the vector according to pascals triangle condition and got the desired 
+//triangle
+//TC:O(N*N)
+//SC:O(N*N)
