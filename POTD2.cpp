@@ -16,3 +16,28 @@ class Solution {
 //because any number must be of form n=3⁰+3¹+3²...and should not be of  n=3ⁿ+2 form after updating
 //sc:O(1)
 //TC:(logN)
+
+
+//problem2:Longest increasing subsequence
+class Solution {
+  public:
+   int lis(vector<int>& nums) {
+        vector<int> temp;
+        temp.push_back(nums[0]);
+        int len=1;
+        for(int i(0);i<nums.size();i++){
+            if(nums[i] > temp.back()){
+                temp.push_back(nums[i]);
+                len++;
+            }else{
+                int ind = lower_bound(temp.begin(),temp.end(),nums[i]) - temp.begin();
+                temp[ind] = nums[i];
+            }
+        }
+        return len;
+    }}
+;
+//Approach:created a temp vector that stores basically a strictly increaing subsequence,if the incoming element is less than the last element of the temp vector
+//than we replaced the element of the lower bound(first element that is just greater than or equal to arr[i]) of arr[i] then continued to find the longest subsequence
+//sc:O(1)
+//TC:(NlogN)
