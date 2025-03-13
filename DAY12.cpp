@@ -77,7 +77,8 @@ public:
 //TC:O(logN)
 //SC:O(1)
 
-
+//problem3:Search insert position
+//https://leetcode.com/problems/search-insert-position/
 class Solution {
 public:
     int searchInsert(vector<int>& nums, int target) {
@@ -86,31 +87,20 @@ public:
         int mid=s+(e-s)/2;
         int ans=-1;
         while(s<=e){
-            if (nums[mid]==target){
-                return mid;
-            }
-            else if(nums[mid]<target){
+            if (nums[mid]<=target){
+                if (nums[mid]==target)
+                {return mid;}
+                ans=mid;
                 s=mid+1;
             }
-            else{
+             else{
                 e=mid-1;
             }
             mid=s+(e-s)/2;
         } 
-         s=0;
-         e=nums.size()-1;
-         mid=s+(e-s)/2;
-         ans=-1;
-         while(s<=e){
-          if(nums[mid]<target){
-            ans=mid;
-                s=mid+1;
-            }
-            else{
-                e=mid-1;
-            }
-            mid=s+(e-s)/2;
-        }
-        return ans+1; 
+        return ans+1;
     }
 };
+//approach: we are storing the indeces where the nums[mid] is either less than or equal to given target and then returning the answer accordingly
+//TC:O(logN)
+//SC:O(1)
