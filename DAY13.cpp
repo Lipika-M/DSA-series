@@ -55,3 +55,35 @@ public:
 //Approach: since the given array is rotated we find the pivot element and then find the part where the target element lies and then did binary search in that part
 //SC:O(1)
 //TC:O(log N)
+
+//Problem:find minimum in rotated array
+//https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+class Solution {
+public:
+int pivoti(vector<int>& nums) {
+    int s = 0;
+    int siz = nums.size();
+    int e = siz - 1;
+    int mid = s + (e - s) / 2;
+    int ans=-1;
+    while (s <=e) {
+        if (nums[0] <= nums[mid]) {
+           ans=mid;
+            s= mid + 1;
+
+         } 
+        else {
+            e=mid-1; }
+    mid = s + (e - s) / 2; 
+    }
+    return ans;
+}
+    int findMin(vector<int>& nums) {
+        int pivot=pivoti(nums);
+        int n=nums.size();
+        return nums[(pivot+1)%n];
+    }
+};
+// Approach:found the pivot element and returned the next element to it and to keep the index in range we took modulus of the required index of minimum element
+//SC:O(1)
+//TC:O(log N)
