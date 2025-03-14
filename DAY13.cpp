@@ -1,4 +1,4 @@
-//Problem:Search in Rotated Sorted Array
+//Problem1:Search in Rotated Sorted Array
 //https://leetcode.com/problems/search-in-rotated-sorted-array/
 int pivoti(vector<int>& nums) {
     int s = 0;
@@ -56,7 +56,7 @@ public:
 //SC:O(1)
 //TC:O(log N)
 
-//Problem:find minimum in rotated array
+//Problem2:find minimum in rotated array
 //https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
 class Solution {
 public:
@@ -86,4 +86,41 @@ int pivoti(vector<int>& nums) {
 };
 // Approach:found the pivot element and returned the next element to it and to keep the index in range we took modulus of the required index of minimum element
 //SC:O(1)
+//TC:O(log N)
+
+//Problem3:Ceil the floor
+//https://www.naukri.com/code360/problems/ceiling-in-a-sorted-array_1825401?leftPanelTabValue=SUBMISSION
+#include<algorithm>
+bool present(vector<int> &a, int n, int x){
+		for(int i=0;i<n;i++){
+			if (a[i]==x){
+				return 1;
+				break;
+			}}
+		return 0;}
+pair<int, int> getFloorAndCeil(vector<int> &a, int n, int x) {
+pair<int, int>ans;
+auto lowptr=lower_bound(a.begin(),a.end(),x);
+auto upptr=upper_bound(a.begin(),a.end(),x);
+int low=*(lowptr-1);
+int up=*(upptr);
+if(x<a.front()){
+	ans.first=-1;
+	ans.second=a[0];
+}
+else if (x>a.back()){
+	ans.first=low;
+	ans.second=-1;
+}
+else if (present(a, n,x))
+{ans.first=x;
+ans.second=x;}
+
+else 
+{ans.first=low;
+ans.second=up;}
+	return ans;
+}
+//Approach: Used the upper bound and lower bound concept and checked the conditions according to the problem statement
+//SC:O(n)
 //TC:O(log N)
