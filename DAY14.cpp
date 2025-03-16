@@ -26,3 +26,40 @@ class Solution {
 //Approach: used binary search to find the square root
 //TC:O(log N)
 //SC:O(1)
+
+//Problem2:koko eating bananas
+//https://leetcode.com/problems/koko-eating-bananas/
+class Solution {
+    private:
+bool possible(vector<int> piles, long long int h,int mid,int n){
+ 
+        long long int giventime=h;
+        long long int tooktime=0 ;
+        for(long long int i=0;i<n;i++){
+            tooktime += (piles[i] + mid - 1) / mid; //this formula is used to calculate the value of ceil division ceil(x/y) more efficiently
+             if (tooktime>giventime )
+            return false;
+             }
+        return true;
+     }
+public:
+    int minEatingSpeed(vector<int>& piles, int h) {
+     
+    int s=1;
+    int n=piles.size();
+    int e=*max_element(piles.begin(), piles.end());
+     int mid=s+(e-s)/2;
+     int ans=-1;
+    while(s<=e){
+         if(possible(piles,h,mid,n)){
+           ans=mid;
+            e=mid-1;
+        }
+        else
+          {  s=mid+1;}
+           mid=s+(e-s)/2;  } 
+    return ans;  
+    }};
+//Approach: used binary search
+//TC:O(Nlog (max(piles))
+//SC:O(1)
