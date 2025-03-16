@@ -63,3 +63,36 @@ public:
 //Approach: used binary search
 //TC:O(Nlog (max(piles))
 //SC:O(1)
+//Problem3: Find the Smallest Divisor Given a Threshold
+//https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/description/
+class Solution {
+      private:
+bool possible(vector<int> nums, int threshold,int mid,int n){
+ int sum=0;
+ for(int i=0;i<n;i++){
+    sum+=(nums[i]+mid-1)/mid;
+ }
+    if(sum<=threshold){
+        return true;
+    }
+       return false; 
+     }
+public:
+    int smallestDivisor(vector<int>& nums, int threshold) {
+        int s=1;
+        int e=*max_element(nums.begin(), nums.end());
+        int n=nums.size();
+        int mid=s+(e-s)/2;
+     int ans=-1;
+      while(s<=e){
+         if(possible(nums,threshold,mid,n)){
+           ans=mid;
+            e=mid-1;
+        }
+        else
+          {  s=mid+1;}
+           mid=s+(e-s)/2;  } 
+    return ans;  
+    }};
+//TC:O(Nlog (max(nums))
+//SC:O(1)
