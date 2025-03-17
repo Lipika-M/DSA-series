@@ -23,6 +23,6 @@ public:
         return 0;
     }
 };
-//Approavh :used binary search to implement search in the matrix
+//Approach :used binary search to implement search in the matrix
 //TC:O(log N)
 //SC:O(1)
