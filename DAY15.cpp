@@ -26,3 +26,27 @@ public:
 //Approach :used binary search to implement search in the matrix
 //TC:O(log N)
 //SC:O(1)
+
+//Problem2:SEARCH A 2D MATRIX II
+//https://leetcode.com/problems/search-a-2d-matrix-ii/description/
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int row = matrix.size();
+        int col = matrix[0].size();
+        int rowind = 0;
+        int colind = col - 1;
+         while (colind>=0 && rowind<row) {
+            int element = matrix[rowind][colind];
+            if (element == target) {
+                return 1;
+            } else if (element < target) {
+             rowind++;
+            }
+            else { 
+            colind--;
+            }  }
+        return 0; }};
+//Approach :used binary search to implement search in the matrix
+//TC:O(log N)
+//SC:O(1)
