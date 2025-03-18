@@ -18,7 +18,7 @@ public:
 //SC:O(U)(U is the number of unique character in the string given)
 
 
-//Problem:median in a rowwise sorted matrix
+//Problem:median in a rowwise sorted matrix(important)
 //https://www.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1
 class Solution {
   public:
@@ -41,3 +41,19 @@ class Solution {
 //approach: Created a vector that stored all the element and then returned the median
 //TC:O(row*col*log(row*col))
 //SC:O(row*col)
+
+//problem :rotated array
+//https://leetcode.com/problems/rotate-array/
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+       vector<int>temp(nums.size());
+       for (int i=0;i<nums.size();i++) {
+        temp[(i+k)%nums.size()]=nums[i];
+       }
+       nums=temp;
+    }
+};
+//approach:used indices to rotate the array
+//TC:O(N)
+//SC:O(N)
