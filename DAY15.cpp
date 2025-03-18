@@ -50,3 +50,23 @@ public:
 //Approach :used binary search to implement search in the matrix
 //TC:O(log N)
 //SC:O(1)
+
+//problem:kth element of two arrays
+//https://www.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array1317/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=k-th-element-of-two-sorted-array
+class Solution {
+  public:
+    int kthElement(vector<int>& a, vector<int>& b, int k) {
+         vector<int>ans;
+         for(int i=0;i<a.size();i++){
+             ans.push_back(a[i]);
+         }
+         for(int i=0;i<b.size();i++){
+             ans.push_back(b[i]);
+         }
+         sort(ans.begin(),ans.end());
+         return ans[k-1];
+    }
+};
+//Approach: used sorting to find the kth element
+//TC:O(Nlog N)
+//SC:O(N+M)(N  and M are the size of two arrays)
