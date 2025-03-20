@@ -45,3 +45,30 @@ public:
 //approach : stored the mapping of each character in a string and checked if any mapping violates the given set of rules
 //TC:O(N+M)
 //SC:O(N+M)
+
+//problem :remove outermost parenthesis
+//https://leetcode.com/problems/remove-outermost-parentheses/description/
+class Solution {
+public:
+    string removeOuterParentheses(string s) {
+        string ans = "";
+        int count = 0;
+        for(int i = 0 ; i < s.length() ; i++) {
+            if(s[i] == '(') {
+                if(count != 0) {
+                    ans.push_back(s[i]);
+                }
+                count++;
+            } else {
+                count--;
+                if(count != 0) {
+                    ans.push_back(s[i]);
+                }
+            }
+        }
+        return ans;
+    }
+};
+//approach :count the occurance of the parenthesis and removed the outermost
+//TC:O(N)
+//SC:O(N)
