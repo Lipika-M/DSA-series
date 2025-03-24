@@ -60,3 +60,46 @@ public:
 //approach:created substrings that are palindrome and then compared their length to find the maximum 
 //TC:O(N*N)
 //SC:O(M)(where m is the length of the longest substring which is palindromic)
+
+
+// Substrings with K Distinct
+// https://www.geeksforgeeks.org/problems/count-number-of-substrings4528/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=count-number-of-substrings
+class Solution {
+public:
+    int countSubstr(string& s, int k) {
+        return atMostK(s, k) - atMostK(s, k - 1);
+    }
+
+private:
+    int atMostK(string& s, int k) {
+        if (k < 0) return 0;
+        unordered_map<char, int> freq;
+        int left = 0, right = 0, count = 0, distinct = 0;
+
+        while (right < s.length()) {
+            if (freq[s[right]] == 0) {
+                distinct++;
+            }
+            freq[s[right]]++;
+            right++;
+
+            while (distinct > k) {   
+                freq[s[left]]--;
+                if (freq[s[left]] == 0) {
+                    distinct--;
+                }
+                left++;
+            }
+
+            count += (right - left);  
+        }
+
+        return count;
+    }
+};
+// Approach : We use a sliding window to count substrings with at most k distinct characters, expanding the right and shrinking the left when needed. A frequency array (freq[26]) tracks characters efficiently. To get exactly k distinct characters, we subtract countAtMostK(s, k-1) from countAtMostK(s, k) . 
+// Cant directly count the only k distinct character substring sas that will leave some cases when in transition so subtract substrings with atmost k and atmost k-1 distinct characters . 
+// right will iterate normally left is 0 and will shift accordignly . 
+
+// TC O(n) {each character vistited twice so technically 2n}
+// SC O(1) {fixed size array is used}
