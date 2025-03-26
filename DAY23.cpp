@@ -59,4 +59,4 @@ public:
 };
 //approach:used KMP algorithm to correctly find the prefix and generating the desired output palindromic string
 //TC:O(N)
-//SC:O(1)
+//SC:O(N)
