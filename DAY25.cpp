@@ -30,4 +30,16 @@ class Solution {
 //tc:o(N)
 //SC:O(1)
 
-//
+
+//problem:delete node in a linked list with no head given
+//https://leetcode.com/problems/delete-node-in-a-linked-list/description/
+class Solution {
+public:
+    void deleteNode(ListNode* node) {
+         node->val = node->next->val;
+         node->next = node->next->next;
+    }
+};
+//Approach: just manipulated the data by copying data of next node to the given node and then pointing its next to the next to next element
+//tc:O(1)
+//SC:O(1)
