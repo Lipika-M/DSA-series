@@ -77,5 +77,6 @@ class Solution {
      return head;
     }
 };
+//approach:iterated till the position is reached and then inserted the given node there
 //TC:O(N) Where N is the given position
 //SC:O(1)
