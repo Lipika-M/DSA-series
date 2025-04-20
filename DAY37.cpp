@@ -26,3 +26,33 @@ public:
 //Approach:used recursion to make valid combinations
 //TC:O(N^k)
 //SC:O(K)
+
+
+//Problem:Subset sums
+//https://www.geeksforgeeks.org/problems/subset-sums2234/1
+class Solution {
+  public:
+   void findCombination(  vector<int>& temp,
+        vector<int>& arr, int sum,  int index) {
+        if (index >= arr.size()) {
+             temp.push_back(sum);
+            return;
+        }
+             sum+=arr[index];
+             findCombination( temp, arr,sum, index+ 1);
+             sum-=arr[index];
+
+            findCombination( temp, arr,sum, index + 1);
+
+        }
+    
+    vector<int> subsetSums(vector<int>& arr) {
+          vector<int> temp;
+         int sum=0;
+      findCombination( temp, arr,sum, 0);
+      return temp;
+    }    
+};
+//Approach:used recursion with backtracking
+//TC:O(2^N)
+//SC:O(K)
